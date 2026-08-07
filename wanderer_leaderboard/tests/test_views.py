@@ -24,8 +24,12 @@ from . import NO_REDIS_CACHE
 class TestSelectedMap(TestCase):
 
     def setUp(self):
-        self.first = TrackedMap.objects.create(name="Alpha", slug="alpha")
-        self.second = TrackedMap.objects.create(name="Beta", slug="beta")
+        self.first = TrackedMap.objects.create(
+            name="Alpha", slug="alpha", base_url="https://wanderer.example.com"
+        )
+        self.second = TrackedMap.objects.create(
+            name="Beta", slug="beta", base_url="https://wanderer.example.com"
+        )
         self.maps = list(TrackedMap.objects.active())
 
     def test_should_return_the_requested_map(self):
@@ -55,8 +59,12 @@ class TestIndex(TestCase):
         )
         self.client.force_login(self.user)
 
-        self.first = TrackedMap.objects.create(name="Alpha", slug="alpha")
-        self.second = TrackedMap.objects.create(name="Beta", slug="beta")
+        self.first = TrackedMap.objects.create(
+            name="Alpha", slug="alpha", base_url="https://wanderer.example.com"
+        )
+        self.second = TrackedMap.objects.create(
+            name="Beta", slug="beta", base_url="https://wanderer.example.com"
+        )
 
     def test_should_fetch_only_the_selected_map(self):
         """One page view, one map, one call to a slow endpoint."""

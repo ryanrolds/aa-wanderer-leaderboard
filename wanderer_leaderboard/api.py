@@ -50,7 +50,7 @@ class WandererApiError(Exception):
 
 
 def base_url_for(tracked_map):
-    return (tracked_map.base_url or app_settings.WANDERER_BASE_URL).rstrip("/")
+    return tracked_map.base_url.rstrip("/")
 
 
 def _map_params(tracked_map):
@@ -157,6 +157,11 @@ def audit_events(tracked_map, period=AUDIT_PERIOD, use_cache=True):
     Each event carries event_name, event_data, inserted_at and an embedded
     character (eve_id, name, corporation_ticker, alliance_ticker).
     """
+    # both are required by the admin form, but a row can still reach here empty
+    # from a shell, a fixture or a data migration
+    if not tracked_map.base_url:
+        raise WandererApiError(f"{tracked_map.name}: no base URL configured")
+
     if not tracked_map.api_token:
         raise WandererApiError(f"{tracked_map.name}: no API key configured")
 

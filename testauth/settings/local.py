@@ -35,10 +35,6 @@ LOGGING = False
 NOTIFICATIONS_REFRESH_TIME = 30
 NOTIFICATIONS_MAX_PER_USER = 50
 
-# The plugin talks to Wanderer over HTTP; tests mock the client, so this only
-# has to be a value that never resolves to something real.
-WANDERER_LEADERBOARD_BASE_URL = "http://wanderer.example.com"
-
 # Alliance Auth calls django_redis.get_redis_connection("default") during
 # app.ready(), so the default cache has to be a real Redis or the test runner
 # will not start. Overridable so the suite can run inside the compose stack

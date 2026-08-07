@@ -174,7 +174,10 @@ class TestMonthlyLeaderboard(TestCase):
     def setUp(self):
         cache.clear()
         self.map = TrackedMap.objects.create(
-            name="Home", slug="home-map", api_token="secret-key"
+            name="Home",
+            slug="home-map",
+            base_url="https://wanderer.example.com",
+            api_token="secret-key",
         )
 
     def _run(self, events, year=2026, month=3):

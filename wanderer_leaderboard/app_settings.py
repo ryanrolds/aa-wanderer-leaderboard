@@ -9,8 +9,6 @@ a setting changed after startup — most often by ``override_settings`` in a tes
 from django.conf import settings
 
 _DEFAULTS = {
-    # Wanderer base URL used for tracked maps that don't set their own.
-    "WANDERER_BASE_URL": ("WANDERER_LEADERBOARD_BASE_URL", "http://wanderer:8000"),
     # Seconds to wait on the map API before giving up.
     "API_TIMEOUT": ("WANDERER_LEADERBOARD_API_TIMEOUT", 30),
     # How long an audit response is cached. One fetch covers three months of
