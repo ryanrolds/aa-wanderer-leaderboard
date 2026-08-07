@@ -13,9 +13,10 @@ keywords = [
     "leaderboard",
     "wanderer",
 ]
-license = "AGPL-3.0-or-later"
+# Matches Alliance Auth, which this app is loaded into and imports from.
+license = "GPL-2.0-only"
 license-files = [
-    "LICENSE.md",
+    "LICENSE",
 ]
 authors = [
     { name = "Ryan R. Olds", email = "ryanrolds@gmail.com" },
@@ -72,6 +73,6 @@ include = [
     "/testauth",
     "/runtests.py",
     "/README.md",
-    "/LICENSE.md",
+    "/LICENSE",
     "/CHANGELOG.md",
 ]
